@@ -1,0 +1,7 @@
+path.root: /agoda-files/
+spring:
+  mvc:
+    async:
+      request-timeout: -1
+
+logging.level.com.agoda.downloader: DEBUG
