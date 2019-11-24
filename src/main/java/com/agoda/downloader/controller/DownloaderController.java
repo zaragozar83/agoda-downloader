@@ -25,6 +25,7 @@ public class DownloaderController {
     @PostMapping
     public CompletableFuture<Void> processFiles(@RequestBody @Valid List<String> files) {
 
+        log.debug("Request sources {}", files.toString());
         return downloaderProcess.download(files);
     }
 }

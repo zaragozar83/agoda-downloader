@@ -1,5 +1,6 @@
 package com.agoda.downloader.service;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +11,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
+@Slf4j
 @Service
 public class MoveFileImpl implements MoveFile{
 
@@ -19,6 +21,7 @@ public class MoveFileImpl implements MoveFile{
     @Override
     public void moveFileToLocal(String path, String fileName) throws IOException {
 
+        log.debug("Moving file from {}", path);
         Files.move(Paths.get(path), fileWithDirectoryAssurance(fileName), StandardCopyOption.REPLACE_EXISTING);
     }
 

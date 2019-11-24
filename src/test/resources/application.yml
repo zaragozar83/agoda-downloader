@@ -1,0 +1,5 @@
+path.root: /agoda-files/
+spring:
+  mvc:
+    async:
+      request-timeout: -1

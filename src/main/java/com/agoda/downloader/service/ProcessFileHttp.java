@@ -23,6 +23,8 @@ public class ProcessFileHttp implements ProcessFile {
     @Override
 
     public InputStream download(String uri) throws Exception {
+
+        log.debug("HTTP file to download, {}", uri.toString());
         return appRestClient.execute(uri, HttpMethod.GET, null, HttpInputMessage::getBody);
     }
 

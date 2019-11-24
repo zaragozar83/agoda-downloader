@@ -1,0 +1,36 @@
+swagger: '2.0'
+info:
+  x-ibm-name: agoda-downloader
+  title: AGODA Downloader API
+  version: 1.0.0
+  description: This API enables download sources from differents protocols.
+  contact:
+    name: Ricardo Zaragoza Solis
+    email: zaragozar83@gmail.com
+schemes:
+  - https
+basePath: /downloader
+consumes:
+  - application/json
+produces:
+  - application/json
+
+paths:
+  /downloader:
+    post:
+      summary: Download the sources form a list of url's
+      parameters:
+        - in: body
+          description: Each element in the array represent the file to download
+          required: true
+          name: url's
+          schema:
+            type: array
+            items:
+              type: string
+              example: https://www.oracle.com/technetwork/java/newtojava/java8book-2172125888.pdf, ftp://ftp.gnu.org/gnu/bc/bc-1.07.1.tar.gz
+      responses:
+        200:
+          description: OK
+        500:
+          description: Internal error
