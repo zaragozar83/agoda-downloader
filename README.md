@@ -1,5 +1,5 @@
 # AGODA DOWNLOADER
-Project to download sources with different protocols for the coding challenge problem for AGODA.
+Project to download sources with different protocols.
 
 ## Getting Started
 
