@@ -21,7 +21,6 @@ public class ProcessFileHttp implements ProcessFile {
     private final RestTemplate appRestClient;
 
     @Override
-
     public InputStream download(String uri) throws Exception {
 
         log.debug("HTTP file to download, {}", uri.toString());

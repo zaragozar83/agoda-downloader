@@ -43,4 +43,11 @@ class DownloaderApplicationTests {
 
 		Void join = voidCompletableFuture.join();
 	}
+
+	@Test
+	@DisplayName("Process controller to download files from Mocks")
+	void downloadFileFromMocks() {
+
+
+	}
 }
