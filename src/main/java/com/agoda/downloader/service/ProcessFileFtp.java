@@ -20,7 +20,7 @@ public class ProcessFileFtp implements ProcessFile {
 
         URI uri = null;
         try {
-            log.debug("FTP file to download, {}", file.toString());
+            log.debug("FTP file to download, {}", file);
             uri = new URI(file);
 
             FTPClient ftpClient = new FTPClient();
