@@ -12,13 +12,19 @@ public class SaveTempImpl implements SaveTemp {
 
     @Override
     public void saveTemporalFile(Path pathTemporalFile, InputStream inputStream) throws IOException {
+
+
         OutputStream outputStream2 = new BufferedOutputStream(new FileOutputStream(pathTemporalFile.toFile()));
-        byte[] bytesArray = new byte[4096];
-        int bytesRead = -1;
-        while ((bytesRead = inputStream.read(bytesArray)) != -1) {
-            outputStream2.write(bytesArray, 0, bytesRead);
+        try {
+            byte[] bytesArray = new byte[4096];
+            int bytesRead = -1;
+            while ((bytesRead = inputStream.read(bytesArray)) != -1) {
+                outputStream2.write(bytesArray, 0, bytesRead);
+            }
+
+        } finally {
+            outputStream2.close();
+            inputStream.close();
         }
-        outputStream2.close();
-        inputStream.close();
     }
 }

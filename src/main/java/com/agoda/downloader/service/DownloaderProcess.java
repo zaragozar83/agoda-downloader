@@ -53,13 +53,11 @@ public class DownloaderProcess {
 
                 moveFile.moveFileToLocal(pathTemporalFile.toFile().getPath(), fileName);
 
-
             } catch (Exception e) {
                 log.error("Error processing file", e);
                 throw new RuntimeException(e);
             }
         });
-
 
     }
 }
