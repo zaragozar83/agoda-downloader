@@ -25,6 +25,7 @@ public class MoveFileImpl implements MoveFile{
     public void moveFileToLocal(String path, String fileName) throws IOException {
 
         log.debug("Moving file from {}", path);
+
         Files.move(Paths.get(path), fileWithDirectoryAssurance(fileName), StandardCopyOption.REPLACE_EXISTING);
     }
 

@@ -1,12 +1,16 @@
 package com.agoda.downloader.service;
 
 import com.agoda.downloader.domain.Protocol;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpMethod;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.ByteArrayInputStream;
@@ -27,6 +31,7 @@ public class ProcessFileHttpTest {
 
     @Mock
     private RestTemplate appRestClient;
+
 
     private final String sampleToInputStream = "Test";
     private final String URI = "uri";
@@ -59,6 +64,21 @@ public class ProcessFileHttpTest {
 
         List<Protocol> protocols = Arrays.asList(Protocol.HTTP, Protocol.HTTPS);
         assertTrue(protocols.containsAll(processFileHttp.getSupportedProtocols()));
+
+    }
+
+    @Test
+    @DisplayName("Not Found Exception Agoda Resource")
+    void downloadResourceNotFoundException() {
+
+        Mockito.when(appRestClient.execute(anyString(),
+                eq(HttpMethod.GET),
+                isNull(),
+                any()))
+                .thenThrow(HttpClientErrorException.NotFound.class);
+
+
+        Assertions.assertThrows(HttpClientErrorException.NotFound.class, () -> processFileHttp.download(URI));
 
     }
 
