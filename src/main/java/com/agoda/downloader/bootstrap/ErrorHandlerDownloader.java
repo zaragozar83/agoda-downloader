@@ -13,7 +13,7 @@ import java.io.IOException;
 @ControllerAdvice
 public class ErrorHandlerDownloader {
 
-    private static String NOT_RESOURCE_FOUND = "Not Agoda Resource Found";
+    private static String NOT_AGODA_RESOURCE_FOUND = "Not Agoda Resource Found";
 
     @ExceptionHandler(HttpClientErrorException.class)
     @ResponseBody
@@ -24,7 +24,7 @@ public class ErrorHandlerDownloader {
 
     @ExceptionHandler(HttpClientErrorException.NotFound.class)
     public void handleNotFound(final HttpServletResponse response) throws IOException {
-        response.sendError(HttpServletResponse.SC_NOT_FOUND, NOT_RESOURCE_FOUND);
+        response.sendError(HttpServletResponse.SC_NOT_FOUND, NOT_AGODA_RESOURCE_FOUND);
     }
 
 }

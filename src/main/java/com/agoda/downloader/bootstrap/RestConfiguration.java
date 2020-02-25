@@ -12,9 +12,8 @@ public class RestConfiguration {
 
     @Bean(name = "apiRestClient")
     public RestTemplate getRestClient() {
-        RestTemplate restClient = new RestTemplate(
+        return new RestTemplate(
                 new BufferingClientHttpRequestFactory(new SimpleClientHttpRequestFactory()));
-        return restClient;
     }
 
 }
