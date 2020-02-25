@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
+import java.nio.file.Files;
 import java.nio.file.Path;
 
 @Slf4j
@@ -12,6 +13,8 @@ public class SaveTempImpl implements SaveTemp {
 
     @Override
     public void saveTemporalFile(Path pathTemporalFile, InputStream inputStream) throws IOException {
+
+
         OutputStream outputStream2 = new BufferedOutputStream(new FileOutputStream(pathTemporalFile.toFile()));
         byte[] bytesArray = new byte[4096];
         int bytesRead = -1;
